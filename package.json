@@ -1,0 +1,6 @@
+{
+  "name": "fullstack-movie-recommendation-app",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\""
+  }
+}
