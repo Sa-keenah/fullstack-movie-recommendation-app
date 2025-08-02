@@ -6,12 +6,8 @@ A full-featured movie recommendation platform built with **React**, **Express**,
 
 ## 🔗 Live Demo
 
-- **Frontend (Vercel)**: [https://your-frontend-url.vercel.app](https://your-frontend-url.vercel.app)
-- **Backend (Render)**: [https://your-backend-url.onrender.com](https://your-backend-url.onrender.com)
-
-> Replace the links above with your actual deployed URLs.
-
----
+- **Frontend (Vercel)**: [https://your-frontend-url.vercel.app](https://fullstack-movie-recommendation-app-two.vercel.app/)
+- **Backend (Render)**: [https://your-backend-url.onrender.com](https://fullstack-movie-recommendation-app.onrender.com)
 
 ## 📁 Project Structure
 fullstack-movie-recommendation-app/
@@ -134,3 +130,28 @@ Add environment variables (MONGO_URI, JWT_SECRET, etc.)
 🧑‍💻 Author
 Your Name
 GitHub
+
+### 🔐 Authentication
+- User registration and login are handled with secure password hashing using [`bcryptjs`](https://www.npmjs.com/package/bcryptjs).
+- JWT tokens are generated using `jsonwebtoken` for authentication and protected routes.
+
+### 🔐 JWT Authentication
+Protected routes require a valid JWT in the `Authorization` header. 
+JWTs are issued upon login and verified via centralized middleware (`middleware/auth.js`) 
+to ensure secure access control.
+
+```js
+Authorization: Bearer <your_token>
+
+### 👤 User Endpoints
+### 👤 User Endpoints
+
+- `POST /api/users/favorites` – Add movie to favorites
+- `DELETE /api/users/favorites/:movieId` – Remove favorite
+- `POST /api/users/watchlists` – Create new watchlist
+- `POST /api/users/watchlists/:title/add` – Add movie to a watchlist
+- `POST /api/users/watchlists/:title/remove` – Remove movie from watchlist
+- `DELETE /api/users/watchlists/:title` – Delete watchlist
+- `GET /api/users/me` – Get current user profile **(JWT protected)**
+- `PUT /api/users/me` – Update user profile **(JWT protected)**
+All protected endpoints require `Authorization: Bearer <token>` header.

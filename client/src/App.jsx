@@ -1,13 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Discover from './pages/Discover';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Discover />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Discover />} />
+    </Routes>
   );
 }
 

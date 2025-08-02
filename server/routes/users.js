@@ -88,5 +88,31 @@ router.delete('/watchlists/:title', verifyToken, async (req, res) => {
   }
 });
 
+// Get current user profile
+router.get('/me', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Update user profile
+router.put('/me', verifyToken, async (req, res) => {
+  const { username, email } = req.body;
+  try {
+    const updated = await User.findByIdAndUpdate(
+      req.user.id,
+      { username, email },
+      { new: true }
+    ).select('-password');
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 
 export default router;
